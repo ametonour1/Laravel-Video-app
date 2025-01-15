@@ -23,4 +23,9 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+Route::middleware(['auth'])->group(function () {
+    Route::get('/upload', [VideoController::class, 'showUploadForm'])->name('videos.upload');
+    Route::post('/upload', [VideoController::class, 'handleUpload'])->name('videos.handleUpload');
+});
+
 require __DIR__.'/auth.php';
