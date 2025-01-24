@@ -3,6 +3,8 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\homeController;
 use App\Http\Controllers\VideoController;
+use App\Http\Controllers\CommentController;
+
 
 
 
@@ -12,6 +14,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [homeController::class, 'index']);
 
 Route::get('/videos/{id}', [VideoController::class, 'show'])->name('videos.show');
+
+Route::post('/videos/{id}/comments', [CommentController::class, 'store'])->name('comments.store');
+Route::get('/videos/{id}/comments', [CommentController::class, 'index'])->name('videos.show');
 
 Route::get('/dashboard', function () {
     return view('dashboard');

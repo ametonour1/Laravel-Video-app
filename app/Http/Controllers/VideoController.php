@@ -20,7 +20,8 @@ class VideoController extends Controller
         
         $video = videosDocument::findOrFail($id); // Find the video by its ID
         $video->increment('views');
-        return view('videos.show', compact('video')); // Pass the video to the detail view
+        $comments = $video->comments()->with('user')->latest()->get();
+        return view('videos.show', compact('video','comments')); // Pass the video to the detail view
         
     }
 

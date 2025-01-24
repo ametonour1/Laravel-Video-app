@@ -13,4 +13,19 @@
             Your browser does not support the video tag.
         </video>
     </div>
+    <div>
+        <h2>Comments</h2>
+@foreach ($comments as $comment)
+    <div>
+        <strong>{{ $comment->user->name }}</strong> said:
+        <p>{{ $comment->content }}</p>
+    </div>
+@endforeach
+
+<form action="{{ route('comments.store', $video->id) }}" method="POST">
+    @csrf
+    <textarea name="content" placeholder="Write a comment..." required></textarea>
+    <button type="submit">Submit</button>
+</form>
+    </div>
 </x-app-layout>

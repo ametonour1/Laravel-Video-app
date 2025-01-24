@@ -7,6 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class videosDocument extends Model
 {
+    public function comments()
+    {
+        return $this->hasMany(Comment::class,'videos_document_id');
+    }
+
     use HasFactory;
 
     protected $table = 'videosDocument';

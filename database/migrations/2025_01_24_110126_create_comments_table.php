@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('comments', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained()->onDelete('cascade'); // Link to users
-            $table->foreignId('video_document_id')->constrained()->onDelete('cascade'); // Link to videos
+            $table->foreignId('videos_document_id')->constrained('videosDocument')->onDelete('cascade'); // Link to videos
             $table->text('content'); // The actual comment content
             $table->timestamps(); // created_at and updated_at
         });
