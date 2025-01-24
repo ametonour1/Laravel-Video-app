@@ -12,9 +12,12 @@ class videosDocument extends Model
     protected $table = 'videosDocument';
 
     protected $fillable = [
+        'user_id',
+        'thumbnail',
         'title',
         'file_path',
         'description',
+        'duration',
         'views',
     ];
 }
