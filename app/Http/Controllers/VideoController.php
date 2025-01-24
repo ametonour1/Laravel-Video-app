@@ -51,6 +51,7 @@ class VideoController extends Controller
     
             $ffprobe = \FFMpeg\FFProbe::create();
             $duration = $ffprobe->format(storage_path("app/public/$videoPath"))->get('duration');
+
             
             Log::info('Video upload started', [
                 'user_id' => $userId,
@@ -63,6 +64,8 @@ class VideoController extends Controller
             $minutes = floor($duration / 60);
             $seconds = $duration % 60;
             $formattedDuration = sprintf('%02d:%02d', $minutes, $seconds);
+            Log::info('formatet duration', ['format_duration' => $formattedDuration,'seconds'=>$seconds,'minutes'=>$minutes]);
+
     
             // Save the record in the database
             $video = videosDocument::create([

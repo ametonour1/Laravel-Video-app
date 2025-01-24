@@ -13,10 +13,11 @@ class videosDocument extends Model
 
     protected $fillable = [
         'user_id',
-        'thumbnail_path',
+        'thumbnail',
         'title',
         'file_path',
         'description',
+        'duration',
         'views',
     ];
 }
